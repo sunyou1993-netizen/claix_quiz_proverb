@@ -721,6 +721,16 @@ function showResultModal(isSuccess) {
 document.addEventListener('DOMContentLoaded', () => {
   setupAutoScaling();
 
+  const backBtn = document.getElementById('btn-kiosk-back');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      sfx.playClick();
+      setTimeout(() => {
+        window.location.href = 'https://claix-quiz-list-rl4x.vercel.app/';
+      }, 150);
+    });
+  }
+
   // Start initial game session immediately
   initGameSession();
 });

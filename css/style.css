@@ -59,6 +59,38 @@ html, body {
   border: none;
 }
 
+/* Top Left Close / Back Button */
+.kiosk-back-btn {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.kiosk-back-btn:active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.22);
+}
+
+.kiosk-back-btn svg {
+  width: 36px;
+  height: 36px;
+  stroke: #334155;
+}
+
 /* Header Area Container */
 .kiosk-header {
   height: 80px;
