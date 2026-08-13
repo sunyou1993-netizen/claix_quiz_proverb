@@ -1,0 +1,8 @@
+{
+  "name": "속담맞추기",
+  "description": "1080x1920 세로형 터치 사이니지용 우리나라 속담 맞추기 디지털 게임 키오스크",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
