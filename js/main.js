@@ -708,9 +708,13 @@ function showResultModal(isSuccess) {
 
   document.body.insertAdjacentHTML('beforeend', modalHtml);
 
+  const backBtn = document.getElementById('btn-kiosk-back');
+  if (backBtn) backBtn.style.display = 'none';
+
   document.getElementById('btn-modal-retry').addEventListener('click', () => {
     sfx.playClick();
     document.querySelector('.result-overlay').remove();
+    if (backBtn) backBtn.style.display = 'flex';
     initGameSession();
   });
 }
