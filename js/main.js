@@ -722,16 +722,30 @@ function showResultModal(isSuccess) {
 // ==========================================
 // 6. INITIALIZATION & GLOBAL LISTENERS
 // ==========================================
+const HOME_URL = 'https://claix-quiz-list6-bp67.vercel.app/';
+
 document.addEventListener('DOMContentLoaded', () => {
   setupAutoScaling();
 
   const backBtn = document.getElementById('btn-kiosk-back');
   if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      sfx.playClick();
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      try {
+        sfx.playClick();
+      } catch (err) {}
+
+      // Always land on the kiosk list page, escaping any iframe this app sits in.
+      try {
+        window.top.location.href = HOME_URL;
+      } catch (err) {
+        window.location.href = HOME_URL;
+      }
+
+      // Safety net: if top-level navigation was blocked, move this frame instead.
       setTimeout(() => {
-        window.location.href = 'https://claix-quiz-list6-bp67.vercel.app/';
-      }, 150);
+        window.location.href = HOME_URL;
+      }, 800);
     });
   }
 
