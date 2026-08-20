@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
     backBtn.addEventListener('click', () => {
       sfx.playClick();
       setTimeout(() => {
-        window.location.href = 'https://claix-quiz-list-rl4x.vercel.app/';
+        window.location.href = 'https://claix-quiz-list6-bp67.vercel.app/';
       }, 150);
     });
   }
