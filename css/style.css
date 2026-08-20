@@ -78,6 +78,9 @@ html, body {
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
   transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.2s ease;
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 body:has(.result-overlay) .kiosk-back-btn {
