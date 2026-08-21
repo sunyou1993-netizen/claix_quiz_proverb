@@ -3,7 +3,7 @@
  * Main JavaScript Module - Complete Interactive Implementation
  */
 
-import { getFull1000Proverbs, DISTRACTOR_POOL, autoSelectTargets } from './proverbs_data.js';
+import { RAW_PROVERB_DATA, DISTRACTOR_POOL, autoSelectTargets } from './proverbs_data.js';
 
 // ==========================================
 // 1. DATA & PROVERB PROCESSOR ENGINE
@@ -268,9 +268,8 @@ function shuffleArray(array) {
 function initGameSession() {
   clearAutoCheckTimer();
 
-  // Pick 10 random questions from the 1,000 proverb database for each game session
-  const allProverbs = getFull1000Proverbs();
-  const selectedRawList = shuffleArray(allProverbs).slice(0, 10);
+  // Pick 10 unique questions from the verified standard proverbs database for each game session
+  const selectedRawList = shuffleArray(RAW_PROVERB_DATA).slice(0, 10);
   PROVERB_DATA = selectedRawList.map((item, idx) => processProverbItem(item, idx + 1));
 
   state.currentProverbIndex = 0;
