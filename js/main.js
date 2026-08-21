@@ -695,8 +695,8 @@ function showResultModal(isSuccess) {
           </div>
         </div>
 
-        <div style="display: flex; gap: 20px; width: 100%; margin-top: 80px; flex-shrink: 0;">
-          <button id="btn-modal-retry" class="ctrl-btn ctrl-btn-pri" style="height: 160px; width: 100%; font-size: 38px; font-weight: 800; border-radius: 24px;">
+        <div style="display: flex; gap: 20px; width: 100%; margin-top: 40px; flex-shrink: 0;">
+          <button id="btn-modal-retry" class="ctrl-btn ctrl-btn-pri" style="height: 130px; width: 100%; font-size: 36px; font-weight: 800; border-radius: 24px;">
             <span>다시 풀어보기</span>
           </button>
         </div>
