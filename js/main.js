@@ -534,8 +534,10 @@ function attachEventHandlers(totalBoxes) {
         state.userAnswers = {};
         state.usedKeypadIndices.clear();
         state.activeBoxIndex = 0;
-        state.isTransitioning = false;
         renderMainGameUI();
+        setTimeout(() => {
+          state.isTransitioning = false;
+        }, 180);
       } else {
         state.isCompleted = true;
         if (state.timerInterval) clearInterval(state.timerInterval);
@@ -694,8 +696,8 @@ function showResultModal(isSuccess) {
         </div>
 
         <div style="display: flex; gap: 20px; width: 100%; margin-top: 0; flex-shrink: 0;">
-          <button id="btn-modal-retry" class="ctrl-btn ctrl-btn-pri" style="height: 66px; width: 100%; font-size: 28px;">
-            <span>처음부터 다시하기</span>
+          <button id="btn-modal-retry" class="ctrl-btn ctrl-btn-pri" style="height: 160px; width: 100%; font-size: 38px; font-weight: 800; border-radius: 24px;">
+            <span>다시 풀어보기</span>
           </button>
         </div>
       </div>
@@ -710,12 +712,33 @@ function showResultModal(isSuccess) {
   const backBtn = document.getElementById('btn-kiosk-back');
   if (backBtn) backBtn.style.display = 'none';
 
-  document.getElementById('btn-modal-retry').addEventListener('click', () => {
-    sfx.playClick();
-    document.querySelector('.result-overlay').remove();
-    if (backBtn) backBtn.style.display = 'flex';
-    initGameSession();
-  });
+  const retryBtn = document.getElementById('btn-modal-retry');
+  let canRetry = false;
+
+  // Protect against unintended click-through from fast pass button taps
+  setTimeout(() => {
+    canRetry = true;
+    if (retryBtn) {
+      retryBtn.style.pointerEvents = 'auto';
+    }
+  }, 650);
+
+  if (retryBtn) {
+    retryBtn.style.pointerEvents = 'none';
+
+    retryBtn.addEventListener('click', (e) => {
+      if (!canRetry) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      sfx.playClick();
+      const overlay = document.querySelector('.result-overlay');
+      if (overlay) overlay.remove();
+      if (backBtn) backBtn.style.display = 'flex';
+      initGameSession();
+    });
+  }
 }
 
 // ==========================================
